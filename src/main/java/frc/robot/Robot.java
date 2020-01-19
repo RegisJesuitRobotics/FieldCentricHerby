@@ -26,7 +26,7 @@ public class Robot extends TimedRobot {
   public static DriveTrain driveTrain = new DriveTrain();
   public static OI m_oi;
   public static Sensors gyro = new Sensors();
-
+  public static ColorSensor m_ColorSensor = new ColorSensor();
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -114,6 +114,8 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+
+    
   }
 
   /**
@@ -122,6 +124,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+    m_ColorSensor.colorDisplay();
   }
 
   /**
